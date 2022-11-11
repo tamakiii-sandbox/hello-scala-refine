@@ -9,7 +9,7 @@ build: Dockerfile
 	docker build -t $(IMAGE) .
 
 bash: build
-	docker run --rm -it $(IMAGE) $@
+	docker run --rm -it -v $(shell pwd):/work -w /work $(IMAGE) $@
 
 clean:
 	docker image rm $(IMAGE)
