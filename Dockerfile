@@ -10,6 +10,7 @@ RUN dnf install -y \
     dnf clean all && \
     rm -rf /var/cache/dnf
 
-RUN curl -fL https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz | gzip -d > cs && \
-    chmod +x cs && \
-    ./cs setup --install-dir=/usr/local/bin
+RUN curl -fL https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz | gzip -d > /tmp/cs && \
+    chmod +x /tmp/cs && \
+    /tmp/cs setup --install-dir=/usr/local/bin && \
+    rm -rf /tmp/cs
